@@ -14,6 +14,7 @@ import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.Messages
+import com.intellij.openapi.util.text.StringUtil
 import com.intellij.openapi.vfs.LocalFileSystem
 import com.intellij.util.Processor
 
@@ -47,6 +48,12 @@ class SearchStringBookmarkAction : AnAction("Search String Bookmark") {
                 p2: String
             ): MutableList<String> {
                 val filteredNames = mutableListOf<String>()
+
+                if (p2.isEmpty()) {
+                    return bookmarks.map { bookmark ->
+                        "${bookmark.name} (${bookmark.filePath}:${bookmark.line + 1})"
+                    }.toMutableList()
+                }
 
                 bookmarks.forEach { bookmark ->
                     val displayName = "${bookmark.name} (${bookmark.filePath}:${bookmark.line + 1})"
@@ -94,6 +101,7 @@ class SearchStringBookmarkAction : AnAction("Search String Bookmark") {
             provider,
             "",          // Predefined text
         )
+
         popup.invoke(
             object : ChooseByNamePopupComponent.Callback() {
                 override fun elementChosen(element: Any?) {

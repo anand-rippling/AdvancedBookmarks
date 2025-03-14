@@ -3,7 +3,9 @@ package com.advanced.bookmarks.advancedbookmarks.actions
 import com.advanced.bookmarks.advancedbookmarks.StringBookmarkManager
 import com.intellij.ide.util.gotoByName.ChooseByNameModel
 import com.intellij.openapi.project.Project
+import java.awt.Component
 import javax.swing.DefaultListCellRenderer
+import javax.swing.JList
 import javax.swing.ListCellRenderer
 
 class BookmarkChooseByName(
@@ -19,7 +21,12 @@ class BookmarkChooseByName(
 
     override fun getCheckBoxName(): String? = null // No checkbox required; return null.
 
-    override fun getFullName(element: Any): String = getElementName(element).toString()
+    override fun getFullName(element: Any): String {
+        return when (element) {
+            is StringBookmarkManager.Bookmark -> "Bookmark: ${element.name} at Line ${element.line} [${element.filePath}]"
+            else -> ""
+        }
+    }
 
     override fun getElementName(element: Any): String? {
         if (element is StringBookmarkManager.Bookmark) {
@@ -38,8 +45,23 @@ class BookmarkChooseByName(
 
 
     override fun getListCellRenderer(): ListCellRenderer<Any> {
-        // Return the renderer for items displayed in the popup.
-        return DefaultListCellRenderer()
+        return object : DefaultListCellRenderer() {
+            override fun getListCellRendererComponent(
+                list: JList<out Any>?,
+                value: Any?,
+                index: Int,
+                isSelected: Boolean,
+                cellHasFocus: Boolean
+            ): Component {
+                val component = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus)
+
+                if (value is StringBookmarkManager.Bookmark) {
+                    // Example Custom Display — File Name & Position
+                    text = " ${value.name}: Line ${value.line} [${value.filePath}]"
+                }
+                return component
+            }
+        }
     }
 
     override fun getSeparators(): Array<String> = arrayOf() // Return no separators for this popup.
