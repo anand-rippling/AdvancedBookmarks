@@ -33,5 +33,8 @@
         <action id="StringBookmark.Search" class="com.advanced.bookmarks.advancedbookmarks.actions.SearchStringBookmarkAction" text="Search String Bookmark" description="Search for a string-based bookmark">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
         </action>
+        <action id="StringBookmark.Remove" class="com.advanced.bookmarks.advancedbookmarks.actions.RemoveBookmarkAction" text="Remove a bookmark" description="Search for a string-based bookmark">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
     </actions>
 </idea-plugin>

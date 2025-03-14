@@ -1,17 +1,17 @@
 package com.advanced.bookmarks.advancedbookmarks
 
-
 import com.intellij.openapi.components.*
-import com.intellij.openapi.components.RoamingType.*
+import com.intellij.openapi.components.RoamingType.DISABLED
 import com.intellij.openapi.project.Project
 import com.jetbrains.rd.util.ConcurrentHashMap
 
 @State(
-    name = "StringBookmarkManager", // The schema key for configuration
+    name = "StringBookmarkManager",
     storages = [Storage(value = "StringBookmarks.xml", roamingType = DISABLED)]
 )
 @Service(Service.Level.PROJECT)
 class StringBookmarkManager(private val project: Project) : PersistentStateComponent<StringBookmarkManager.State> {
+    // Store bookmarks uniquely by `name`
     private val bookmarks: MutableMap<String, Bookmark> = ConcurrentHashMap()
 
     data class Bookmark(val filePath: String, val line: Int, val name: String)
@@ -31,18 +31,28 @@ class StringBookmarkManager(private val project: Project) : PersistentStateCompo
             Bookmark(filePath = parts[0], line = parts[1].toInt(), name = parts[2])
         })
     }
+
+    /**
+     * Add a bookmark. If a bookmark with the same name already exists, it will be replaced.
+     */
     fun addBookmark(filePath: String, line: Int, name: String) {
         require(filePath.isNotEmpty()) { "File path cannot be empty" }
         require(line > 0) { "Line number must be greater than 0" }
         require(name.isNotEmpty()) { "Bookmark name cannot be empty" }
         val bookmark = Bookmark(filePath, line, name)
-        bookmarks[filePath + line] = bookmark // Assuming a unique key is constructed from `filePath + line`
+        bookmarks[name] = bookmark // Ensure uniqueness by `name`
     }
 
-    fun getBookmark(identifier: String): Bookmark? {
-        return bookmarks[identifier]
+    /**
+     * Get a bookmark by its unique name.
+     */
+    fun getBookmark(name: String): Bookmark? {
+        return bookmarks[name]
     }
 
+    /**
+     * List all bookmarks.
+     */
     fun listBookmarks(): Map<String, Bookmark> {
         return bookmarks.mapValues { entry ->
             Bookmark(
@@ -53,7 +63,10 @@ class StringBookmarkManager(private val project: Project) : PersistentStateCompo
         }
     }
 
-    fun removeBookmark(identifier: String) {
-        bookmarks.remove(identifier)
+    /**
+     * Remove a bookmark by its unique name.
+     */
+    fun removeBookmark(name: String) {
+        bookmarks.remove(name)
     }
 }

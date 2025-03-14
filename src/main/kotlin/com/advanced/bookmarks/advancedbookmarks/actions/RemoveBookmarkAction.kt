@@ -1,7 +1,8 @@
+package com.advanced.bookmarks.advancedbookmarks.actions
+import com.advanced.bookmarks.advancedbookmarks.StringBookmarkManager
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.project.Project
-import com.intellij.ui.popup.JBPopupFactory
+import com.intellij.openapi.ui.popup.JBPopupFactory
 import javax.swing.DefaultListCellRenderer
 import javax.swing.JList
 import java.awt.Component
