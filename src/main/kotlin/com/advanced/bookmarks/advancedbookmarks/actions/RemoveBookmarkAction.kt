@@ -8,7 +8,7 @@ import javax.swing.JList
 import java.awt.Component
 import javax.swing.JOptionPane
 
-class RemoveBookmarkAction : AnAction("Remove Bookmark", "Search and Remove a Bookmark Permanently", null) {
+class RemoveBookmarkAction : AnAction("Remove String Bookmark", "Search and Remove a Bookmark Permanently", null) {
 
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project ?: return
