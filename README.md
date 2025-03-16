@@ -1,5 +1,5 @@
-Intellij has pnemonic bookmarks where you can assign a key to a bookmark, and then search that bookmarks using a key. 
-I wanted bookmarks where I can assign a string text to it. And then search this bookmarks using that string. Therefore I made this plugin for this functionality
+Intellij has pnemonic bookmarks where you can assign a single letter key like (A ,B, C, 1, 2, 3) to a bookmark, and then navigate to that bookmark using that key. 
+I wanted bookmarks where I can assign a string text to it. And then search this bookmark using that string. Therefore I made this plugin for this functionality
 
 ### How it works ? 
 It assigns a string to a bookmark which you can use later to search. The bookmarks are stored using this key. If you bookmark again using the same key, it will override the previous bookmarks
