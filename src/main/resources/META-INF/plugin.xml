@@ -5,17 +5,33 @@
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-    <name>AdvancedBookmarks</name>
+    <name>Advanced Bookmarks</name>
 
-    <!-- A displayed Vendontir name or Organization ID displayed on the Plugins Page. -->
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor email="asranand7@gmail.com" url="https://www.linkedin.com/asranand7">Anand</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-    This is a advanced bookmarks search plugin, where you can assign strings to bookmarks instead of pnemonics and search using that string and to that reference
-  ]]></description>
+        <h2>Advanced Bookmarks</h2>
+        <p>A modern bookmarking plugin that enhances your code navigation experience with named bookmarks and rich previews.</p>
+        
+        <h3>Features:</h3>
+        <ul>
+            <li>Create named bookmarks with descriptive text</li>
+            <li>Quick search with code previews</li>
+            <li>Easy navigation between bookmarks</li>
+            <li>Modern UI with syntax highlighting</li>
+        </ul>
+
+        <h3>Usage:</h3>
+        <ul>
+            <li>Add Bookmark: Right-click > Add String Bookmark (Alt+Shift+B)</li>
+            <li>Search Bookmarks: Right-click > Search String Bookmark (Alt+Shift+F)</li>
+            <li>Remove Bookmark: Right-click > Remove Bookmark</li>
+        </ul>
+    ]]></description>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
@@ -25,15 +41,28 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
     </extensions>
+
     <actions>
-        <action id="StringBookmark.Add" class="com.advanced.bookmarks.advancedbookmarks.actions.AddStringBookmarkAction" text="Add String Bookmark" description="Add a new string-based bookmark">
+        <action id="StringBookmark.Add" 
+                class="com.advanced.bookmarks.advancedbookmarks.actions.AddStringBookmarkAction" 
+                text="Add String Bookmark" 
+                description="Add a new string-based bookmark">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <keyboard-shortcut first-keystroke="alt shift B" keymap="$default"/>
         </action>
 
-        <action id="StringBookmark.Search" class="com.advanced.bookmarks.advancedbookmarks.actions.SearchStringBookmarkAction" text="Search String Bookmark" description="Search for a string-based bookmark">
+        <action id="StringBookmark.Search" 
+                class="com.advanced.bookmarks.advancedbookmarks.actions.SearchStringBookmarkAction" 
+                text="Search String Bookmarks" 
+                description="Search through your string-based bookmarks">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <keyboard-shortcut first-keystroke="alt shift F" keymap="$default"/>
         </action>
-        <action id="StringBookmark.Remove" class="com.advanced.bookmarks.advancedbookmarks.actions.RemoveBookmarkAction" text="Remove a bookmark" description="Search for a string-based bookmark">
+
+        <action id="StringBookmark.Remove" 
+                class="com.advanced.bookmarks.advancedbookmarks.actions.RemoveBookmarkAction" 
+                text="Remove Bookmark" 
+                description="Remove an existing bookmark">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
         </action>
     </actions>

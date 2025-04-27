@@ -1,11 +1,11 @@
 plugins {
     id("java")
     id("org.jetbrains.kotlin.jvm") version "1.9.25"
-    id("org.jetbrains.intellij") version "1.17.4"
+    id("org.jetbrains.intellij") version "1.17.2"
 }
 
 group = "com.advanced.bookmarks"
-version = "1.0-SNAPSHOT"
+version = "1.1.2-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -17,7 +17,8 @@ intellij {
     version.set("2024.2.1")
     type.set("IC") // Target IDE Platform
     plugins.set(listOf("com.intellij.java"))
-    sameSinceUntilBuild.set(true)
+    sameSinceUntilBuild.set(false)
+    updateSinceUntilBuild.set(true)
 }
 
 tasks {
@@ -34,7 +35,7 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("202")
+        sinceBuild.set("241")
         untilBuild.set("999.*")
     }
 
