@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.advanced.bookmarks"
-version = "1.1.2-SNAPSHOT"
+version = "1.2.0"
 
 repositories {
     mavenCentral()
@@ -36,7 +36,6 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("241")
-        untilBuild.set("999.*")
     }
 
     signPlugin {

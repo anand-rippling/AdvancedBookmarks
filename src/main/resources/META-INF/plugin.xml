@@ -15,23 +15,33 @@
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
         <h2>Advanced Bookmarks</h2>
-        <p>A modern bookmarking plugin that enhances your code navigation experience with named bookmarks and rich previews.</p>
-        
+        <p>Advanced Bookmarks is a modern IntelliJ IDEA plugin that lets you assign descriptive string keys to bookmarks, making code navigation and recall easier than ever. Unlike traditional bookmarks that use single keys, you can search, add, and manage bookmarks using meaningful text.</p>
         <h3>Features:</h3>
         <ul>
-            <li>Create named bookmarks with descriptive text</li>
-            <li>Quick search with code previews</li>
-            <li>Easy navigation between bookmarks</li>
-            <li>Modern UI with syntax highlighting</li>
+            <li>Assign string-based keys to bookmarks</li>
+            <li>Quickly search bookmarks by text</li>
+            <li>Code preview with syntax highlighting</li>
+            <li>Easy add, search, and remove actions</li>
+            <li>Modern, intuitive UI</li>
         </ul>
-
-        <h3>Usage:</h3>
+        <h3>How It Works:</h3>
         <ul>
-            <li>Add Bookmark: Right-click > Add String Bookmark (Alt+Shift+B)</li>
-            <li>Search Bookmarks: Right-click > Search String Bookmark (Alt+Shift+F)</li>
-            <li>Remove Bookmark: Right-click > Remove Bookmark</li>
+            <li><b>Add Bookmark:</b> Assign a string to a bookmark for easy recall. If you use the same key again, it will override the previous bookmark.</li>
+            <li><b>Search Bookmarks:</b> Instantly find bookmarks by typing their string key.</li>
+            <li><b>Remove Bookmarks:</b> Remove bookmarks by searching or from the context menu.</li>
+        </ul>
+        <h3>Installation:</h3>
+        <ul>
+            <li>Install from JetBrains Marketplace (after publishing)</li>
+            <li>Or download the latest release from <a href="https://github.com/anand-rippling/AdvancedBookmarks/releases">GitHub Releases</a> and install from disk</li>
         </ul>
     ]]></description>
+
+    <change-notes><![CDATA[
+        <ul>
+            <li>Initial public release: Add, search, and remove string-based bookmarks with code preview.</li>
+        </ul>
+    ]]></change-notes>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
